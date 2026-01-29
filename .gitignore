@@ -1,0 +1,26 @@
+# Environment variables 
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Logs
+*.log
+
+# HuggingFace / ML cache
+.cache/
+.huggingface/
+hf_cache/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,24 @@
+# Environment & secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Local docs / data
+docs/
+
+# Git & editor files
+.git
+.gitignore
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db

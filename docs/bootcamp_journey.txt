@@ -1,0 +1,237 @@
+﻿Bootcamp Journey
+Use this document as a high-level overview of your journey. 
+This document will reference both these aspects: 
+* Technical Skills Development
+   * Core ML/AI Concepts
+   * Gen AI & Data Engineering
+   * MLOps & Deployment 
+* Project-Based Learning
+   * Agile Scrum Methodology
+   * Team Collaborations
+   * Real-world Applications
+
+
+Project Timeline
+Here is a high-level timeline of your 11-week journey.
+Week 1 - 11 Agenda for AI PM Bootcamp 
+* Week 1: Learning and Onboarding Study all the AI knowledge: 
+   * Training for AI Engineers
+   * Engineers’ Training Youtube Playlist
+   * Training of AI Designers
+   * Designers’ Training Playlist
+   * Engineers: Working on Job Assistant Agent or Discord RAG FAQ Chatbot
+      * Make sure to join Office hours to discuss your thoughts and issues with these projects. (every Saturday)
+
+   * Week 2: Learning and Onboarding Study all the AI knowledge: 
+   * Engineers/Data Scientists
+   * Training for AI Engineers
+   * Engineers’ Training Youtube Playlist
+   * Designers
+   * Training of AI Designers
+   * Designers’ Training Playlist
+   * Designers:  Join Pitch Day & Team Match (within 24 fill out AI products interested in on Team Match.xls for Cohort 7) - 
+   * Designers and PM’s need to reach out to each other and determine if they are a good match. Each team can initially have 2 designers. (1 - Senior + 1 - Junior)
+   * Format: Full_Name(Role - Senior/Junior)
+   * Senior 2 or more years of experience
+   * After designers join the team: Discuss User Interview process [PM to lead this discussion] ⇒Prioritize Fast matching this week
+   * Main communication = Discord (check daily)
+   * Engineers: Working on Job Assistant Agent or Discord RAG FAQ Chatbot
+   * Make sure to join Office hours to discuss your thoughts and issues with these projects. 
+
+      * Week 3: Continue development
+      * Designer building High-Fidelity Designs 
+      * User Interviews (continue)
+      * Prepare for Week 4 presentation to Engineers/Data Scientists
+      * Engineers: Working on Job Assistant Agent or Discord RAG FAQ Chatbot
+      * Make sure to join Office hours to discuss your thoughts and issues with these projects. 
+      * Submit your code and video walk through of code logic and provide a running example by filling out this Google Form 
+
+         * Week 4: Prepare and Join Pitch Day & Ranking
+         * Designers & PM present to Engineers
+         * Engineers join Zoom Pitch Day and fill out Google Ranking form. (Lead Engineers get Ranking choice priority)  
+         * Lead Engineer Responsibilities = 
+         * Lead System Architecture Design (Bring thoughts to Office Hours)
+         * Determine version control process in shared repository (Github) [And Git locally]
+         * Assist other Engineers (not code for them but help with issues/hurdles)
+         * Help PM’s with technical hurdles
+
+
+         * Week 5: Cross-functional team collaboration. Agile feature development
+         * Week 6: Cross-functional team collaboration. Agile feature development
+         * Week 7 Cross-functional team collaboration. Agile feature development 
+         * Week 8: Cross-functional team collaboration. Agile feature development 
+         * Week 9: Cross-functional team collaboration. Agile feature development
+         * Week 10: Testing and Demo ready
+         * Week 11: Demo!
+
+
+Training Documents: 
+         * Training for Engineers (Click link)  
+         * Training for Designers (Click link)  
+         * Transformers Illustrated
+         * The Illustrated Transformer – Jay Alammar
+         * Andrej Karpathy's Neural Networks Zero to Hero
+         * Neural Networks: Zero to Hero - YouTube
+         * HuggingFace Course
+         * Introduction - Hugging Face NLP Course
+
+
+Gen AI & Data Engineering (4 Days)
+Generative AI for Beginners | Microsoft Learn
+         * Day 1-2: LLM Fundamentals
+         * LLM architectures
+         * Prompt engineering
+         * Context length and limitations
+         * RAG (Retrieval Augmented Generation)
+         * Vector databases
+         * Day 3: Data Engineering
+         * Data preprocessing
+         * Text chunking strategies
+         * Embedding models
+         * Vector similarity search
+         * Data quality and validation
+         * Day 4: Integration
+         * API integration (OpenAI, Anthropic)
+         * Streaming responses
+         * Error handling
+         * Cost optimization
+         * Practical Exercises:
+         * Build a simple chatbot
+         * Implement RAG system
+         * Create custom training dataset
+         * Resources:
+         * LangChain Documentation
+         * Tutorials | 🦜️🔗 LangChain
+         * OpenAI Cookbook
+         * GitHub - openai/openai-cookbook: Examples and guides for using the OpenAI API
+         * Vector Database Fundamentals
+         * What is a Vector Database & How Does it Work? Use Cases + Examples | Pinecone
+
+
+
+
+MLOps & Deployment (3 Days)
+         * Day 1: Development Practices
+         * Git workflow
+         * Code review process
+         * Documentation standards
+         * Testing strategies
+         * Day 2: Deployment
+         * Docker containerization
+         * CI/CD pipelines
+         * Model serving
+         * API development (FastAPI)
+         * Day 3: Monitoring
+         * Logging best practices
+         * Performance monitoring
+         * Cost tracking
+         * Error handling
+         * Resources:
+         * MLOps Zoomcamp
+         * GitHub - DataTalksClub/mlops-zoomcamp: Free MLOps course from DataTalks.Club
+         * FastAPI Documentation
+         * FastAPI
+         * Docker for ML
+         * Docker For Data Scientists
+
+
+
+
+Project-Based Learning (Weeks 3-11)
+         * Agile Scrum Methodology (Week 3)
+                        Please set aside 1 hour for Agile (Week 1&2)
+Understanding Agile Scrum.pdf
+What Is Agile Methodology? | Introduction to Agile Methodology in Six Minutes | Simplilearn
+What Is Agile Scrum Framework? | Scrum Framework Explained | Agile Methodology | Simplilearn
+Master the Daily Scrum: Everything You Need to Know for Agile Success! 🚀 | Scrum Basics Simplified
+What are the tools and techniques for documenting and tracking scope and change in agile?
+         * Sprint Structure: (team consensus)
+         * 1-2 week sprints
+         * Standups (15 mins)
+         * Sprint planning (1 hour)
+         * Sprint review (20 mins)
+         * Retrospective (20 mins)
+         * Documentation Requirements: (team consensus)
+         * Sprint backlog
+         * User stories
+         * Technical documentation
+         * API documentation
+         * Deployment guides
+         * Tools: [PM’s to choose]
+         * Any free Project tracking tool (JIRA, Monday etc.)
+         * https://clickup.com/
+         * Google Sheets
+         * https://linear.app/ 
+         * https://taiga.io/ 
+         *          * Any choice of documentation tool
+         * GitHub for code management
+         * Team Collaborations (Weeks 4-11)
+         * Team Structure:
+         * Roles:
+         *   Full Stack Engineer
+         * Front end Engineer
+         * Back end Engineer
+         * Fullstack Engineer
+         *   Data Scientist
+         *   UX Designer
+         *   Product Manager
+         * Example Weekly Schedule: (team consensus)
+         * Monday: Sprint planning/review
+         * 2 times Weekly: Standups
+         * Wednesday: Technical discussion
+         * Friday: Demo/documentation
+         * Real-world Applications (Ongoing)
+         * Project Requirements:
+         * Business value proposition
+         * Scalability considerations
+         * Cost optimization
+         * Security compliance
+         * User experience
+         * Deliverables: (team consensus)
+         * Working prototype
+         * Technical documentation
+         * API documentation
+         * Deployment pipeline
+         * Monitoring dashboard
+         * Final presentation
+
+
+Onboarding Video Link By Anil Thomas: https://youtu.be/ZBEoZYmMCMc [Cohort 5]
+
+
+Success Metrics:
+         1. Functional prototype
+         2. Clean, documented code
+         3. Comprehensive testing
+         4. Clear documentation
+         5. Effective presentation
+         6. Team collaboration
+
+
+Tools & Technologies
+[05. Tools & Technologies.docx]
+Mentor Kat Sao’s Schedule & Recordings (Cohort 3) 
+
+
+Week 1: Friday, January 31 @11am - Duration: 1hr
+   Session Theme: Introduction, What to expect, Timelines, Q&A https://youtu.be/_v6hyhS_U0U
+
+Week 2: Friday, February 7 @ 11am - Duration : 30 mins Session Theme: Q&A: General - (Session Canceled, No attendees)
+
+
+Week 3: Friday, February 14 @ 11am - Duration 1hr Session Theme: Prepping for Team Matching & I’m on a team, now what?  https://youtu.be/d7bCIwlXZsY
+
+
+Week 4: Friday, February 21 @ 10am - Duration 30 mins Session Theme: AI Product Lifecycle https://youtu.be/sc8g3RvwBBk
+
+
+Week 5: Friday, February 28 @ 11am - Duration 30 mins Session Theme: Outcome Mindset & Delivering Value  https://youtu.be/ADjjqyM1zP4
+
+
+Week 6: Friday, March 7 @ 11am - Duration 30 mins Session Theme: Q&A: Retrospective, how’s it going? (no recording) No Recording
+
+
+Week 7: Friday, March 14 @ 11am - Duration 1hr Session Theme: Q&A and Retrospective -  No recording 
+
+
+Week 10: Friday, April 4 @ 11am - Duration 1hr Final Session Theme: Demo Practice & Retrospective  - CANCELED
