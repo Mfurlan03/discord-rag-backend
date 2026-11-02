@@ -1,113 +1,70 @@
-import os, glob, time
-from dotenv import load_dotenv
-from pymongo import MongoClient
-from sentence_transformers import SentenceTransformer
+"""Ingest ./docs into MongoDB Atlas for RETRIEVER_BACKEND=atlas.
 
-# Load environment variables from .env file
-load_dotenv()
+Chunks each document, embeds the chunks, and replaces that document's
+previous chunks so re-running is idempotent. The memory backend needs no ingestion:
+it chunks and indexes ./docs at startup.
+"""
 
-# MongoDB config 
-# Fail fast if the database connection string is missing
-MONGODB_URI = os.getenv("MONGODB_URI")
-if not MONGODB_URI:
-    raise ValueError("Missing MONGODB_URI in environment/.env")
+from __future__ import annotations
 
-DB_NAME = os.getenv("MONGODB_DB", "discord_rag")
-COLL_NAME = os.getenv("MONGODB_COLLECTION", "chunks")
+import argparse
+import time
 
-# Use explicit timeouts to avoid hanging if Atlas is unreachable
-client = MongoClient(
-    MONGODB_URI,
-    serverSelectionTimeoutMS=30000,
-    connectTimeoutMS=30000,
-    socketTimeoutMS=30000,
-)
-coll = client[DB_NAME][COLL_NAME]
+from rag.chunking import chunk_documents, load_documents
+from rag.config import Settings
+from rag.embeddings import SentenceTransformerEmbedder
 
-# Ensure each chunk is uniquely identifiable
-try:
+
+def ingest(folder: str, settings: Settings, strategy: str | None = None) -> int:
+    strategy = strategy or settings.chunk_strategy
+    from pymongo import MongoClient
+
+    if not settings.mongodb_uri:
+        raise ValueError("Missing MONGODB_URI in environment/.env")
+
+    coll = MongoClient(settings.mongodb_uri, serverSelectionTimeoutMS=30000)[settings.mongodb_db][
+        settings.mongodb_collection
+    ]
     coll.create_index("chunkId", unique=True)
-except Exception:
-    pass
+    embedder = SentenceTransformerEmbedder(settings.embedding_model, settings.hf_cache_dir)
 
-# Embedding model cache
-# Use a writable cache directory 
-HF_CACHE_DIR = (
-    os.getenv("SENTENCE_TRANSFORMERS_HOME")
-    or os.getenv("HF_HOME")
-    or "/tmp/hf_cache"
-)
-os.makedirs(HF_CACHE_DIR, exist_ok=True)
-
-# Embedding model
-model = SentenceTransformer(
-    "sentence-transformers/all-MiniLM-L6-v2",
-    cache_folder=HF_CACHE_DIR
-)
-
-# Chunking 
-# Split text into overlapping chunks to preserve context across boundaries
-def chunk_text(text: str, chunk_size: int = 900, overlap: int = 150):
-    chunks = []
-    i = 0
-    step = max(1, chunk_size - overlap)
-
-    while i < len(text):
-        chunk = text[i:i + chunk_size]
-        if chunk.strip():
-            chunks.append(chunk)
-        i += step
-
-    return chunks
-
-# Ingestion pipeline 
-# Reads docs, chunks them, embeds them, and stores them in MongoDB
-def ingest(folder: str = "docs"):
-    files = glob.glob(os.path.join(folder, "*.txt"))
-    if not files:
+    docs = load_documents(folder)
+    if not docs:
         print(f"No .txt files found in {folder}/")
-        return
+        return 0
 
-    total_inserted = 0
-
-    for path in files:
-        doc_name = os.path.basename(path)
-
-        with open(path, "r", encoding="utf-8") as f:
-            text = f.read()
-
-        chunks = chunk_text(text)
+    total = 0
+    for name, text in docs.items():
+        chunks = chunk_documents({name: text}, strategy, settings.chunk_size, settings.chunk_overlap)
         if not chunks:
-            print(f"Skipped {doc_name}: no valid chunks")
+            print(f"Skipped {name}: no valid chunks")
             continue
-
-        # Remove old chunks for this document before re-ingesting
-        deleted = coll.delete_many({"docName": doc_name}).deleted_count
-
-        embeddings = model.encode(
-            chunks,
-            normalize_embeddings=True
-        ).tolist()
-
+        embeddings = embedder.encode([c.text for c in chunks])
         now = time.time()
-        records = []
-        for i, (chunk, emb) in enumerate(zip(chunks, embeddings)):
-            records.append({
-                "docName": doc_name,
-                "chunkId": f"{doc_name}_chunk_{i}",
-                "chunkIndex": i,
-                "text": chunk,
-                "preview": chunk[:200],
-                "embedding": emb,
+        records = [
+            {
+                "docName": c.doc_name,
+                "chunkId": c.chunk_id,
+                "chunkIndex": c.index,
+                "text": c.text,
+                "preview": c.text[:200],
+                "embedding": emb.tolist(),
                 "createdAt": now,
-            })
+            }
+            for c, emb in zip(chunks, embeddings, strict=True)
+        ]
+        deleted = coll.delete_many({"docName": name}).deleted_count
+        coll.insert_many(records, ordered=False)
+        total += len(records)
+        print(f"{name}: deleted {deleted}, inserted {len(records)}")
 
-        if records:
-            coll.insert_many(records, ordered=False)
-            total_inserted += len(records)
-            print(f"{doc_name}: deleted {deleted}, inserted {len(records)}")
+    print(f"Done. Inserted {total} chunks into {settings.mongodb_db}.{settings.mongodb_collection}")
+    return total
 
-    print(f"Done. Inserted {total_inserted} chunks into {DB_NAME}.{COLL_NAME}")
 
 if __name__ == "__main__":
-    ingest()
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--docs", default="docs")
+    p.add_argument("--strategy", choices=["lines", "fixed"], default=None, help="defaults to CHUNK_STRATEGY")
+    a = p.parse_args()
+    ingest(a.docs, Settings.from_env(), a.strategy)
