@@ -1,0 +1,36 @@
+{"id": "q01", "question": "Is this internship paid?", "doc": "intern_faq.txt", "span": "The internship is unpaid, but it offers valuable experience"}
+{"id": "q02", "question": "How many hours a week do I need to commit?", "doc": "intern_faq.txt", "span": "A minimum of 10 hours per week is required"}
+{"id": "q03", "question": "Do I have to use a particular programming language for my project?", "doc": "intern_faq.txt", "span": "There is no preference for a specific technology stack"}
+{"id": "q04", "question": "What if my GitHub repo for the assessment is private?", "doc": "intern_faq.txt", "span": "Public repositories are preferred for proper evaluation"}
+{"id": "q05", "question": "Am I allowed to call external APIs in my AI project?", "doc": "intern_faq.txt", "span": "you are encouraged to use APIs"}
+{"id": "q06", "question": "Who pays for cloud and API costs during the project?", "doc": "intern_faq.txt", "span": "will cover the cloud and API cost"}
+{"id": "q07", "question": "Will the company buy me a laptop?", "doc": "intern_faq.txt", "span": "we will not cover the computer device cost"}
+{"id": "q08", "question": "Can I use my OPT work permit to re-enter the US after travelling abroad?", "doc": "intern_faq.txt", "span": "please contact your immigration lawyer"}
+{"id": "q09", "question": "Do interns get access to the Kajabi course modules?", "doc": "intern_faq.txt", "span": "Only PMs enrolled in the program have access to our course modules"}
+{"id": "q10", "question": "How many designers, backend and frontend engineers usually make up a team?", "doc": "intern_faq.txt", "span": "1 designer, 2 back-end, 1 front-end, 1 data scientist per team"}
+{"id": "q11", "question": "Who should I tag with operations questions, and can I DM Dr. Nancy Li?", "doc": "intern_faq.txt", "span": "tag Marla for operations questions"}
+{"id": "q12", "question": "What should I do first after joining the Discord server?", "doc": "intern_faq.txt", "span": "update your profile with your full name and linkedin url"}
+{"id": "q13", "question": "Where do I introduce myself and share my tech stack?", "doc": "intern_faq.txt", "span": "introduce yourself in the #networking channel"}
+{"id": "q14", "question": "I need visa sponsorship, what do I do?", "doc": "intern_faq.txt", "span": "#visa-sponsorship discord channel"}
+{"id": "q15", "question": "What do engineers fill out after the week 4 pitch day?", "doc": "intern_faq.txt", "span": "Ranking their top 3 product idea choices"}
+{"id": "q16", "question": "What does it take to earn the top Trailblazer award?", "doc": "intern_faq.txt", "span": "Attended 90%+ team meetings"}
+{"id": "q17", "question": "What are the requirements for the AI Rising Star tier?", "doc": "intern_faq.txt", "span": "Participated in the entire project without quitting"}
+{"id": "q18", "question": "When does cohort 7 run?", "doc": "intern_faq.txt", "span": "Cohort #7 = Jan-19-2026  - Mar-30-2026"}
+{"id": "q19", "question": "What is the typical team size?", "doc": "intern_faq.txt", "span": "Typical team size: 8–10 members"}
+{"id": "q20", "question": "How do I see every channel in the Discord server?", "doc": "intern_faq.txt", "span": "Select “Show All Channels”"}
+{"id": "q21", "question": "My CPT ends in the middle of a cohort, can I still join?", "doc": "intern_faq.txt", "span": "We have to move you to the future cohort"}
+{"id": "q22", "question": "What verification system is used to confirm I can legally work in the US?", "doc": "intern_faq.txt", "span": "E-Verify system"}
+{"id": "q23", "question": "How many applications did the AI engineer internship receive?", "doc": "intern_faq.txt", "span": "Over 2,000 applications were received"}
+{"id": "q24", "question": "Can the internship end date go past the cohort end date?", "doc": "intern_faq.txt", "span": "the team can extend the end date past the cohort"}
+{"id": "q25", "question": "What are a lead engineer's responsibilities?", "doc": "bootcamp_journey.txt", "span": "Lead System Architecture Design"}
+{"id": "q26", "question": "How long are sprints and standups?", "doc": "bootcamp_journey.txt", "span": "1-2 week sprints"}
+{"id": "q27", "question": "Which project tracking tools can the team use?", "doc": "bootcamp_journey.txt", "span": "Any free Project tracking tool (JIRA, Monday etc.)"}
+{"id": "q28", "question": "What topics are covered on the data engineering day?", "doc": "bootcamp_journey.txt", "span": "Text chunking strategies"}
+{"id": "q29", "question": "What happens in weeks 10 and 11 of the bootcamp?", "doc": "bootcamp_journey.txt", "span": "Week 10: Testing and Demo ready"}
+{"id": "q30", "question": "How is project success measured?", "doc": "bootcamp_journey.txt", "span": "Comprehensive testing"}
+{"id": "q31", "question": "Which two starter projects can engineers work on in the first weeks?", "doc": "bootcamp_journey.txt", "span": "Working on Job Assistant Agent or Discord RAG FAQ Chatbot"}
+{"id": "q32", "question": "Roughly how many words is 100 tokens?", "doc": "training_ai_engineer.txt", "span": "100 tokens ~=75 words"}
+{"id": "q33", "question": "What does it mean when a language model hallucinates?", "doc": "training_ai_engineer.txt", "span": "Hallucinations: Wrong, made up, answers"}
+{"id": "q34", "question": "What paper introduced the transformer architecture?", "doc": "training_ai_engineer.txt", "span": "Attention is All you need"}
+{"id": "q35", "question": "What are the four agent strategies from DeepLearning.AI?", "doc": "training_ai_engineer.txt", "span": "4 AI Agent Strategies"}
+{"id": "q36", "question": "Are there resources to learn SQL?", "doc": "training_ai_engineer.txt", "span": "Learn SQL in 1 hour"}

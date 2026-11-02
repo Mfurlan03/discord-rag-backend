@@ -5,13 +5,17 @@
 # Python
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.ruff_cache/
 
 # Virtual environments
 .venv/
 venv/
 
-# Local docs / data
-docs/
+# Not needed at runtime
+tests/
+eval/
+.github/
 
 # Git & editor files
 .git

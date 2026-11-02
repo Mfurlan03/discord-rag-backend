@@ -1,0 +1,24 @@
+# Local stack: API (in-memory hybrid retrieval over ./docs) + Discord bot.
+#   cp .env.example .env   # add LLM_API_KEY and DISCORD_BOT_TOKEN
+#   docker compose up --build
+services:
+  api:
+    build: .
+    env_file: .env
+    environment:
+      RETRIEVER_BACKEND: ${RETRIEVER_BACKEND:-memory}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./docs:/app/docs:ro
+
+  bot:
+    build: .
+    command: ["python", "bot.py"]
+    env_file: .env
+    environment:
+      RAG_API_URL: http://api:8000/api/rag-query
+    depends_on:
+      api:
+        condition: service_healthy
+    profiles: ["bot"]
