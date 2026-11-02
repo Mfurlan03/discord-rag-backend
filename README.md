@@ -81,19 +81,27 @@ python -m eval.run_eval --modes bm25       # fully offline
 Metrics: **Hit@k** (gold passage in the top k) and **MRR@10**. CI runs the full eval with
 `all-MiniLM-L6-v2` on every push and publishes the table to the workflow summary.
 
-**BM25 results** (offline, reproducible with the command above):
+**Results** (CI run with `all-MiniLM-L6-v2`; BM25 rows reproduce offline):
 
-| Chunking | Chunks | Hit@1 | Hit@3 | Hit@5 | MRR@10 |
-|---|---:|---:|---:|---:|---:|
-| fixed (900 chars, 150 overlap) | 54 | 0.722 | 0.833 | 0.861 | 0.785 |
-| line-aware (900 / 150) | 51 | 0.583 | 0.778 | 0.833 | 0.706 |
+| Chunking | Retriever | Hit@1 | Hit@3 | Hit@5 | MRR@10 |
+|---|---|---:|---:|---:|---:|
+| fixed (900 / 150) | BM25 | **0.722** | 0.833 | 0.861 | 0.785 |
+| fixed | dense (MiniLM) | 0.444 | 0.806 | 0.889 | 0.634 |
+| fixed | hybrid (RRF) | 0.611 | **0.917** | **0.944** | 0.769 |
+| line-aware (900 / 150) | BM25 | 0.583 | 0.778 | 0.833 | 0.706 |
+| line-aware | dense (MiniLM) | 0.694 | 0.861 | 0.889 | 0.788 |
+| line-aware | **hybrid (RRF)** | 0.694 | 0.889 | 0.917 | **0.803** |
 
-Dense and hybrid results with MiniLM: see the **retrieval-eval** job summary in
-[Actions](https://github.com/Mfurlan03/discord-rag-backend/actions).
+**What this showed**
 
-**What this showed:** line-aware chunking, which keeps bullets and Q/A lines intact, is
-*worse* for BM25 on this corpus than plain fixed windows. So `CHUNK_STRATEGY` stays `fixed`
-by default, and the change has to justify itself on the numbers.
+- **Hybrid beats either retriever alone** on recall: BM25 and dense miss *different* questions
+  (BM25 misses paraphrases like "what does it mean when a model hallucinates"; dense misses
+  exact-roster questions like team composition), and RRF recovers both.
+- **Chunking interacts with the retriever.** Line-aware chunking *hurts* BM25 but makes dense
+  retrieval much sharper (Hit@1 0.44 → 0.69), because whole bullets and Q/A pairs embed more
+  cleanly than windows that cut mid-sentence.
+- The default is therefore **hybrid + line-aware** (best MRR, 0.803). Evaluated on BM25 alone,
+  this change looked like a regression, which is why the eval runs with the real model in CI.
 
 ---
 
@@ -138,7 +146,7 @@ as a non-root user and ships with a health check.
 |---|---|---|
 | `RETRIEVER_BACKEND` | `memory` | `memory` or `atlas` |
 | `RETRIEVAL_MODE` | `hybrid` | `dense`, `bm25` or `hybrid` (memory backend) |
-| `CHUNK_STRATEGY` | `fixed` | `fixed` or `lines` |
+| `CHUNK_STRATEGY` | `lines` | `lines` (line-aware) or `fixed` |
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | `900` / `150` | Characters |
 | `TOP_K` | `5` | Chunks passed to the LLM |
 | `MIN_SCORE` | `0.25` | Cosine cut-off (dense / Atlas only) |

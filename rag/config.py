@@ -41,7 +41,7 @@ class Settings:
     snippet_chars: int = 180
     max_context_chars: int = 6000
     embed_cache_ttl_seconds: int = 600
-    chunk_strategy: str = "fixed"  # "fixed" or "lines"; pick with `python -m eval.run_eval`
+    chunk_strategy: str = "lines"  # "lines" or "fixed"; chosen with `python -m eval.run_eval`
     chunk_size: int = 900
     chunk_overlap: int = 150
 
@@ -77,7 +77,7 @@ class Settings:
             snippet_chars=int(_env("SNIPPET_CHARS", "180")),
             max_context_chars=int(_env("MAX_CONTEXT_CHARS", "6000")),
             embed_cache_ttl_seconds=int(_env("EMBED_CACHE_TTL_SECONDS", "600")),
-            chunk_strategy=_env("CHUNK_STRATEGY", "fixed").lower(),
+            chunk_strategy=_env("CHUNK_STRATEGY", "lines").lower(),
             chunk_size=int(_env("CHUNK_SIZE", "900")),
             chunk_overlap=int(_env("CHUNK_OVERLAP", "150")),
         )
